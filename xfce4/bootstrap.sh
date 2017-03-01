@@ -8,6 +8,10 @@ if ! [ -L ~/src/xfce4 ]; then
 	chmod u+x ~/src/xfce4/xfce4-build.sh
 fi
 
+# Avoid error 'mesg: ttyname failed: Inappropriate ioctl for device'
+# See http://superuser.com/questions/1160025/how-to-solve-ttyname-failed-inappropriate-ioctl-for-device-in-vagrant
+echo "tty -s && mesg n" > /root/.profile
+
 # Allow any user to start X
 cp /vagrant/Xwrapper.config /etc
 
